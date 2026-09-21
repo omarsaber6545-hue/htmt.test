@@ -1,0 +1,368 @@
+/* ==========================================================================
+   3D EXPLODED VIEW & EDITORIAL CONNECTING LABELS
+   ========================================================================== */
+
+/* 3D World Stage inside the Hero Center */
+.stage-world-3d {
+  position: relative;
+  width: 320px;
+  height: 380px;
+  transform-style: preserve-3d;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Soft Warm Natural Contact Shadow on Cream Ground */
+.stage-shadow-disc {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%) rotateX(85deg);
+  width: 290px;
+  height: 190px;
+  background: radial-gradient(ellipse at center, rgba(45, 25, 15, 0.28) 0%, rgba(45, 25, 15, 0.08) 50%, transparent 75%);
+  filter: blur(12px);
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+}
+
+/* ==========================================================================
+   REAL ASSEMBLED PRODUCT HERO PHOTOGRAPHY
+   ========================================================================== */
+.hero-assembled-photo-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transform-style: preserve-3d;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(25px);
+}
+
+.hero-assembled-photo-wrap.is-exploded {
+  opacity: 0;
+  transform: translateZ(50px) scale(1.1);
+  pointer-events: none;
+}
+
+.hero-real-food-img {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 20px 45px rgba(45, 25, 15, 0.22), 0 0 0 6px rgba(255, 255, 255, 0.8);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  filter: contrast(1.04) brightness(1.02);
+}
+
+.hero-real-food-img:hover {
+  transform: scale(1.04) rotate(-1deg);
+  box-shadow: 0 28px 55px rgba(45, 25, 15, 0.3), 0 0 0 8px rgba(194, 106, 39, 0.35);
+}
+
+/* Layer Stack Container */
+.layers-stack {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.layers-stack.is-exploded {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Individual Layer Item */
+.product-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-spring), opacity var(--transition-smooth), filter var(--transition-smooth);
+  will-change: transform, opacity, filter;
+  cursor: pointer;
+}
+
+.layer-visual-wrap {
+  width: 260px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: filter var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.layer-visual-wrap img,
+.layer-visual-wrap svg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 18px rgba(45, 25, 15, 0.18));
+  pointer-events: none;
+}
+
+/* Hover on layer */
+.product-layer:hover .layer-visual-wrap {
+  transform: scale(1.04);
+  filter: drop-shadow(0 16px 24px rgba(194, 106, 39, 0.35));
+}
+
+/* ==========================================================================
+   THIN CONNECTING LINES & EDITORIAL LABELS HUD
+   ========================================================================== */
+.layer-editorial-label-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateZ(15px);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  white-space: nowrap;
+  z-index: 50;
+}
+
+/* Labels are revealed when the stage has .exploded class */
+.exploded .layer-editorial-label-wrap {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Alternating Placement: Odd to Right, Even to Left */
+.layer-pos-right {
+  left: 92%;
+  flex-direction: row;
+}
+
+.layer-pos-left {
+  right: 92%;
+  flex-direction: row-reverse;
+}
+
+/* Thin Connecting Line between Layer and Label */
+.editorial-connector-line {
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(194, 106, 39, 0.65), rgba(194, 106, 39, 0.15));
+  position: relative;
+}
+
+.layer-pos-left .editorial-connector-line {
+  background: linear-gradient(270deg, rgba(194, 106, 39, 0.65), rgba(194, 106, 39, 0.15));
+}
+
+/* Small Anchor Dot on Layer side */
+.editorial-connector-dot {
+  position: absolute;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-copper);
+}
+
+.layer-pos-right .editorial-connector-dot {
+  left: 0;
+}
+
+.layer-pos-left .editorial-connector-dot {
+  right: 0;
+}
+
+/* Editorial Floating Label Card */
+.editorial-label-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  box-shadow: 0 8px 25px rgba(45, 25, 15, 0.08);
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  min-width: 130px;
+}
+
+.editorial-label-card:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: var(--accent-copper);
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(194, 106, 39, 0.15);
+}
+
+.label-title-en {
+  font-family: var(--font-serif);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1.15;
+}
+
+.label-subtitle-en {
+  font-size: 0.68rem;
+  color: var(--accent-copper);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.label-title-ar {
+  font-family: var(--font-arabic-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.1;
+  margin-top: 1px;
+}
+
+/* ==========================================================================
+   INSPECTION INTERACTION STATES
+   ========================================================================== */
+.stage-world-3d.has-inspected-layer .product-layer:not(.is-inspected) {
+  opacity: 0.22;
+  filter: blur(2px) grayscale(0.3);
+  pointer-events: none;
+}
+
+.product-layer.is-inspected {
+  transform: translate3d(0, 0, 150px) scale(1.15) !important;
+  z-index: 150 !important;
+}
+
+.product-layer.is-inspected .editorial-label-card {
+  border-color: var(--accent-copper);
+  background: #ffffff;
+  box-shadow: 0 14px 40px rgba(194, 106, 39, 0.25);
+}
+
+/* Floating Ingredient Detail Popover HUD */
+.stage-inspection-popover {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-line);
+  border-radius: var(--radius-lg);
+  padding: 18px 24px;
+  width: 90%;
+  max-width: 440px;
+  box-shadow: var(--shadow-lg), 0 0 35px rgba(194, 106, 39, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-spring);
+}
+
+.stage-inspection-popover.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.popover-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popover-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.popover-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-copper);
+}
+
+.popover-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.popover-title-ar {
+  font-family: var(--font-arabic-serif);
+  font-size: 0.95rem;
+  color: var(--accent-copper);
+}
+
+.btn-close-popover {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition-fast);
+}
+
+.btn-close-popover:hover {
+  background: var(--text-heading);
+  color: var(--text-light);
+}
+
+.popover-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.popover-origin-row {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .editorial-connector-line {
+    width: 35px;
+  }
+  .editorial-label-card {
+    min-width: 105px;
+    padding: 6px 10px;
+  }
+  .label-title-en {
+    font-size: 0.78rem;
+  }
+  .label-title-ar {
+    font-size: 0.68rem;
+  }
+}

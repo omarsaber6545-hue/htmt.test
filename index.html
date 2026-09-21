@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>MAISON DÉLICE • Luxury Interactive 3D Restaurant Menu</title>
+  <meta name="title" content="MAISON DÉLICE • Luxury Interactive 3D Restaurant Menu" />
+  <meta name="description" content="An avant-garde dining showcase featuring 3D exploded culinary animations, single-origin ingredient inspection, AI physics layer generation, and real-time live studio editing." />
+  <meta name="keywords" content="interactive restaurant menu, 3d food menu, exploded burger, culinary anatomy, luxury food design, ai restaurant menu" />
+  <meta name="author" content="Maison Délice Gastronomy Atelier" />
+  <meta name="theme-color" content="#fbf8f2" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MAISON DÉLICE • Luxury Interactive 3D Restaurant Menu" />
+  <meta property="og:description" content="Experience culinary art through interactive 3D exploded layers, artisan ingredient inspection, and curated dining." />
+
+  <!-- Google Fonts: Editorial Serif, Playfair Display, Cinzel, Plus Jakarta Sans, Noto Serif/Sans Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Sans+Arabic:wght@400;600;700;800&family=Noto+Serif+Arabic:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Design System & Stylesheets -->
+  <link rel="stylesheet" href="./styles/theme.css" />
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./styles/exploded-view.css" />
+  <link rel="stylesheet" href="./styles/admin.css" />
+</head>
+<body>
+  <!-- Main Application Root -->
+  <div id="app">
+    <!-- 1. Header Navigation Mount -->
+    <header id="nav-mount"></header>
+
+    <!-- 2. Hero 3-Column Experience Mount -->
+    <main id="hero-mount"></main>
+
+    <!-- 3. Horizontal Product Carousel Mount Directly Below Hero -->
+    <section id="carousel-mount"></section>
+
+    <!-- 4. Luxury Restaurant Atelier Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand-wrap">
+          <div class="brand-monogram">M</div>
+          <div>
+            <div class="footer-brand-title">MAISON DÉLICE</div>
+            <div class="footer-brand-desc">Haute Gastronomy • Artisan Atelier</div>
+          </div>
+        </div>
+
+        <div class="footer-atelier-notes">
+          <div class="atelier-note-pill">
+            <span>🌿</span>
+            <span>100% Organic Sourced</span>
+          </div>
+          <div class="atelier-note-pill">
+            <span>⚡</span>
+            <span>Interactive 3D Experience</span>
+          </div>
+          <div class="atelier-note-pill">
+            <span>⭐</span>
+            <span>Chef Recommended</span>
+          </div>
+        </div>
+
+        <div class="footer-copyright">
+          &copy; 2026 Maison Délice. All rights reserved. Handcrafted with culinary passion.
+        </div>
+      </div>
+    </footer>
+
+    <!-- 5. Slide-over Creator Studio Drawer Mount -->
+    <div id="studio-modal-mount"></div>
+
+    <!-- 6. Toast Notifications Container -->
+    <div id="global-toast-container" class="toast-container" aria-live="polite"></div>
+  </div>
+
+  <!-- Main ES Module Application Script -->
+  <script type="module" src="./scripts/app.js"></script>
+</body>
+</html>

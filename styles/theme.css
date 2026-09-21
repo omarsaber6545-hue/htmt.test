@@ -1,0 +1,170 @@
+/* ==========================================================================
+   THEME & DESIGN SYSTEM - WARM EDITORIAL LUXURY RESTAURANT
+   ========================================================================== */
+
+:root {
+  /* Color Palette: Warm Organic Cream, Dark Roast Espresso & Terracotta */
+  --bg-primary: #fbf8f2;
+  --bg-secondary: #f4ede2;
+  --bg-tertiary: #ece2d3;
+  --bg-surface: #ffffff;
+  --bg-surface-warm: rgba(255, 255, 255, 0.85);
+  --bg-overlay: rgba(28, 18, 12, 0.6);
+
+  /* Typography Colors: Rich Roast Coffee & Warm Earth */
+  --text-primary: #1c120c;
+  --text-heading: #26160d;
+  --text-secondary: #6e5a4e;
+  --text-muted: #8d796c;
+  --text-light: #fbf8f2;
+
+  /* Accents & Metallic Warm Finishes */
+  --accent-copper: #c26a27;
+  --accent-copper-hover: #a35317;
+  --accent-gold: #b45309;
+  --accent-amber-glow: rgba(194, 106, 39, 0.2);
+  --accent-olive: #556b2f;
+  --accent-crimson: #991b1b;
+
+  /* Thin Elegant Editorial Borders */
+  --border-subtle: rgba(60, 30, 15, 0.1);
+  --border-line: rgba(60, 30, 15, 0.18);
+  --border-copper: rgba(194, 106, 39, 0.35);
+
+  /* Soft Natural Shadows */
+  --shadow-sm: 0 4px 15px rgba(45, 25, 15, 0.04);
+  --shadow-md: 0 12px 30px rgba(45, 25, 15, 0.07);
+  --shadow-lg: 0 24px 50px rgba(45, 25, 15, 0.1);
+  --shadow-float: 0 30px 60px rgba(35, 18, 10, 0.14);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  /* Typography Fonts */
+  --font-serif: 'Playfair Display', 'Cinzel', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-arabic-serif: 'Noto Serif Arabic', 'Amiri', serif;
+  --font-arabic-sans: 'Noto Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 0.65s cubic-bezier(0.34, 1.4, 0.64, 1);
+  --transition-cinematic: 0.85s cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* 3D Perspective Defaults */
+  --stage-perspective: 1200px;
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* Subtle Organic Warm Background Sheen */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  background: radial-gradient(circle at 50% 10%, rgba(244, 237, 226, 0.8) 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--text-heading);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* RTL Specific typography */
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+  font-family: var(--font-arabic-serif);
+  letter-spacing: normal;
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-arabic-sans);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-copper);
+}
+
+/* Editorial Utilities */
+.editorial-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  color: var(--accent-copper);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+[dir="rtl"] .editorial-tag {
+  letter-spacing: 0.05em;
+}
+
+.thin-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 16px 0;
+}

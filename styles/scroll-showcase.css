@@ -1,0 +1,189 @@
+/* ==========================================================================
+   CINEMATIC SCROLL SHOWCASE STYLES
+   ========================================================================== */
+
+.scroll-showcase-view {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Pinned sticky screen container */
+.scroll-sticky-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 24px;
+  overflow: hidden;
+  z-index: 20;
+}
+
+/* Scroll progress indicator header */
+.scroll-hud-header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 10;
+}
+
+.scroll-chapter-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-chapter-label {
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.scroll-product-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-highlight);
+}
+
+.scroll-progress-bar-wrap {
+  width: 200px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+  border-radius: var(--radius-pill);
+  transition: width 0.1s linear;
+}
+
+/* Center 3D Stage in Scroll Mode */
+.scroll-3d-center {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-world-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Side story overlay during scroll */
+.scroll-story-card {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 340px;
+  background: rgba(18, 24, 38, 0.85);
+  backdrop-filter: var(--blur-card);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 15;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-story-tag {
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.scroll-story-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.scroll-story-body {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Bottom Scroll Instruction Prompt */
+.scroll-footer-prompt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: rgba(15, 20, 32, 0.6);
+  backdrop-filter: var(--blur-card);
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  z-index: 10;
+}
+
+.mouse-scroll-icon {
+  width: 20px;
+  height: 32px;
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  position: relative;
+}
+
+.mouse-scroll-icon::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 6px;
+  background: var(--accent-gold);
+  border-radius: 2px;
+  animation: scrollWheel 1.8s infinite;
+}
+
+@keyframes scrollWheel {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 12px); opacity: 0; }
+}
+
+/* Dummy Scroll Track Spacer: Creates actual scroll height */
+.scroll-track-spacer {
+  height: 400vh; /* 4 stages per showcase item */
+  position: relative;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .scroll-story-card {
+    position: static;
+    transform: none;
+    max-width: 90%;
+    margin-top: 10px;
+  }
+  .scroll-sticky-stage {
+    padding: 20px 16px;
+  }
+}
